@@ -1,0 +1,86 @@
+name: firestore-auto-id
+version: 0.1.0
+specVersion: v1beta
+
+displayName: Firestore Auto Document ID
+description: >-
+  Automatically assigns the document ID as a field inside each document
+  whenever a new document is created — works in top-level collections and
+  up to 5 levels of subcollections.
+
+license: Apache-2.0
+
+# TODO: replace with your real publisher info
+author:
+  authorName: aaronat1
+  authorUrl: https://github.com/aaronat1
+
+# URL of your public GitHub repository — required for Extensions Hub publishing
+sourceUrl: https://github.com/aaronat1/firestore-auto-id
+
+billingRequired: true
+
+params:
+  - param: ID_FIELD_NAME
+    label: ID Field Name
+    description: >-
+      The name of the field to write the document ID into.
+      Defaults to "id".
+    type: string
+    default: id
+    required: true
+
+resources:
+  - name: assignDocumentIdL1
+    type: firebaseextensions.v1beta.function
+    description: Top-level collections ({c1}/{d1})
+    properties:
+      location: ${param:LOCATION}
+      runtime: nodejs18
+      eventTrigger:
+        eventType: providers/cloud.firestore/eventTypes/document.create
+        resource: projects/${param:PROJECT_ID}/databases/(default)/documents/{c1}/{d1}
+
+  - name: assignDocumentIdL2
+    type: firebaseextensions.v1beta.function
+    description: Subcollection depth 2 ({c1}/{d1}/{c2}/{d2})
+    properties:
+      location: ${param:LOCATION}
+      runtime: nodejs18
+      eventTrigger:
+        eventType: providers/cloud.firestore/eventTypes/document.create
+        resource: projects/${param:PROJECT_ID}/databases/(default)/documents/{c1}/{d1}/{c2}/{d2}
+
+  - name: assignDocumentIdL3
+    type: firebaseextensions.v1beta.function
+    description: Subcollection depth 3 ({c1}/{d1}/{c2}/{d2}/{c3}/{d3})
+    properties:
+      location: ${param:LOCATION}
+      runtime: nodejs18
+      eventTrigger:
+        eventType: providers/cloud.firestore/eventTypes/document.create
+        resource: projects/${param:PROJECT_ID}/databases/(default)/documents/{c1}/{d1}/{c2}/{d2}/{c3}/{d3}
+
+  - name: assignDocumentIdL4
+    type: firebaseextensions.v1beta.function
+    description: Subcollection depth 4
+    properties:
+      location: ${param:LOCATION}
+      runtime: nodejs18
+      eventTrigger:
+        eventType: providers/cloud.firestore/eventTypes/document.create
+        resource: projects/${param:PROJECT_ID}/databases/(default)/documents/{c1}/{d1}/{c2}/{d2}/{c3}/{d3}/{c4}/{d4}
+
+  - name: assignDocumentIdL5
+    type: firebaseextensions.v1beta.function
+    description: Subcollection depth 5
+    properties:
+      location: ${param:LOCATION}
+      runtime: nodejs18
+      eventTrigger:
+        eventType: providers/cloud.firestore/eventTypes/document.create
+        resource: projects/${param:PROJECT_ID}/databases/(default)/documents/{c1}/{d1}/{c2}/{d2}/{c3}/{d3}/{c4}/{d4}/{c5}/{d5}
+
+roles:
+  - role: datastore.user
+    reason: Required to write the id field back to the newly created document.
