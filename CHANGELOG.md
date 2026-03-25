@@ -1,3 +1,7 @@
+## Version 0.1.1
+
+- Fix: Added required `LOCATION` parameter so Cloud Functions deploy correctly.
+
 ## Version 0.1.0
 
 - Initial release.
