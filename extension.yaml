@@ -1,5 +1,5 @@
 name: firestore-auto-id
-version: 0.1.1
+version: 0.1.2
 specVersion: v1beta
 
 displayName: Firestore Auto Document ID
@@ -65,7 +65,7 @@ resources:
     description: Top-level collections ({c1}/{d1})
     properties:
       location: ${param:LOCATION}
-      runtime: nodejs18
+      runtime: nodejs20
       eventTrigger:
         eventType: providers/cloud.firestore/eventTypes/document.create
         resource: projects/${param:PROJECT_ID}/databases/(default)/documents/{c1}/{d1}
@@ -75,7 +75,7 @@ resources:
     description: Subcollection depth 2 ({c1}/{d1}/{c2}/{d2})
     properties:
       location: ${param:LOCATION}
-      runtime: nodejs18
+      runtime: nodejs20
       eventTrigger:
         eventType: providers/cloud.firestore/eventTypes/document.create
         resource: projects/${param:PROJECT_ID}/databases/(default)/documents/{c1}/{d1}/{c2}/{d2}
@@ -85,7 +85,7 @@ resources:
     description: Subcollection depth 3 ({c1}/{d1}/{c2}/{d2}/{c3}/{d3})
     properties:
       location: ${param:LOCATION}
-      runtime: nodejs18
+      runtime: nodejs20
       eventTrigger:
         eventType: providers/cloud.firestore/eventTypes/document.create
         resource: projects/${param:PROJECT_ID}/databases/(default)/documents/{c1}/{d1}/{c2}/{d2}/{c3}/{d3}
@@ -95,7 +95,7 @@ resources:
     description: Subcollection depth 4
     properties:
       location: ${param:LOCATION}
-      runtime: nodejs18
+      runtime: nodejs20
       eventTrigger:
         eventType: providers/cloud.firestore/eventTypes/document.create
         resource: projects/${param:PROJECT_ID}/databases/(default)/documents/{c1}/{d1}/{c2}/{d2}/{c3}/{d3}/{c4}/{d4}
@@ -105,7 +105,7 @@ resources:
     description: Subcollection depth 5
     properties:
       location: ${param:LOCATION}
-      runtime: nodejs18
+      runtime: nodejs20
       eventTrigger:
         eventType: providers/cloud.firestore/eventTypes/document.create
         resource: projects/${param:PROJECT_ID}/databases/(default)/documents/{c1}/{d1}/{c2}/{d2}/{c3}/{d3}/{c4}/{d4}/{c5}/{d5}

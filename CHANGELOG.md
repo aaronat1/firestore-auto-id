@@ -1,3 +1,7 @@
+## Version 0.1.2
+
+- Fix: Upgraded runtime from nodejs18 (decommissioned) to nodejs20.
+
 ## Version 0.1.1
 
 - Fix: Added required `LOCATION` parameter so Cloud Functions deploy correctly.
