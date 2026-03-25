@@ -1,3 +1,7 @@
+## Version 0.1.3
+
+- Add extension icon.
+
 ## Version 0.1.2
 
 - Fix: Upgraded runtime from nodejs18 (decommissioned) to nodejs20.
